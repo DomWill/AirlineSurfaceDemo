@@ -40,19 +40,15 @@ namespace AirlineSurfaceDemo
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private async System.Threading.Tasks.Task FindFlight()
         {
             try
             {
                 FlightXML3SoapClient client = new FlightXML3SoapClient();
                 client.ClientCredentials.UserName.UserName = "domwill";
-                client.ClientCredentials.UserName.Password = "94cbda5fc45127c0bb257d948ce2101c9641df78";
+                client.ClientCredentials.UserName.Password = "###########";
                 
+                //Code locks here. Unsure why but UWP forces me to use the Async version of FlightInfoStatus
                 FlightInfoStatusResponse response = await client.FlightInfoStatusAsync("VA912", false, "", 1, 0);
 
                 foreach (var flight in response.FlightInfoStatusResult.flights)
@@ -110,5 +106,9 @@ namespace AirlineSurfaceDemo
             //Console.WriteLine(airportInfo.AirportResult.Code);
         }
 
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
